@@ -18,8 +18,8 @@ class Stack {
         this.stack = []
     }
 
-    push(element) {
-        this.stack.push(element)
+    push(el) {
+        this.stack.push(el)
     }
 
     pop() {

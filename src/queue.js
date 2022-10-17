@@ -27,21 +27,21 @@ class Queue {
     }
 
     enqueue(value) {
-        const nNode = new ListNode(value)
-        if (!this.head) this.head = nNode
+        const n_Node = new ListNode(value)
+        if (!this.head) this.head = n_Node
         else {
             let current = this.head
             while (current.next) current = current.next
-            current.next = nNode
+            current.next = n_Node
         }
         this.length++;
     }
 
     dequeue() {
-        let dellN = this.head
-        this.head = dellN.next
+        let d_Node = this.head
+        this.head = d_Node.next
         this.length--;
-        return dellN.value
+        return d_Node.value
     }
 }
 
