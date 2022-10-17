@@ -49,11 +49,36 @@ class BinarySearchTree {
     }
 
     remove(data) {
-        this.root = this.removeNode(this.rootNode, data)
+        return this.removeNode(this.rootNode, data)
     }
 
     removeNode(node, data) {
-
+        if (node === null) {
+            return null
+        }
+        if (data > node.data) {
+            node.right = this.removeNode(node.right, data);
+            return node;
+        }
+        if (data < node.data) {
+            node.left = this.removeNode(node.left, data);
+            return node;
+        }
+        if (node.left === null && node.right === null) {
+            node = null;
+            return node;
+        }
+        if (node.left === null) {
+            node = node.right;
+            return node;
+        }
+        if (node.right === null) {
+            node = node.left;
+            return node;
+        }
+        node.data = this.l_rSearch(node.right, "left").data
+        node.right = this.removeNode(node.right, node.data);
+        return node;
     }
 
     min() {
