@@ -23,29 +23,6 @@ class BinarySearchTree {
         }
     }
 
-    has(data) {
-        return this.find(data) !== null
-    }
-
-    find(data) {
-        const findF = (node, data) => !node ? null : node.data === data ? node : data < node.data ? findF(node.left, data) : findF(node.right, data)
-        return findF(this.rootNode, data)
-    }
-
-    remove(data) {
-        return data
-    }
-
-    min() {
-        throw new NotImplementedError('Not implemented');
-        // remove line with error and write your code here
-    }
-
-    max() {
-        throw new NotImplementedError('Not implemented');
-        // remove line with error and write your code here
-    }
-
     addNode(node, n_Node) {
         if (n_Node.data < node.data) {
             if (node.left === null) {
@@ -61,6 +38,37 @@ class BinarySearchTree {
             }
         }
     }
+
+    has(data) {
+        return this.find(data) !== null
+    }
+
+    find(data) {
+        const findF = (node, data) => !node ? null : node.data === data ? node : data < node.data ? findF(node.left, data) : findF(node.right, data)
+        return findF(this.rootNode, data)
+    }
+
+    remove(data) {
+        this.root = this.removeNode(this.rootNode, data)
+    }
+
+    removeNode(node, data) {
+
+    }
+
+    min() {
+        return this.l_rSearch(this.rootNode, "left").data
+    }
+
+    max() {
+        return this.l_rSearch(this.rootNode, "right").data
+    }
+
+    l_rSearch(node, direction) {
+        return !node[direction] ? node : this.l_rSearch(node[direction], direction)
+    }
+
+
 }
 
 module.exports = {
